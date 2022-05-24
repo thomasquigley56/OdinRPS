@@ -5,12 +5,14 @@ function computerPlay() {
     else return "Paper";
 }
 
-function RoundRPS(playerSelection, computerSelection){
+function playRound(playerSelection, computerSelection){
     const pChoice = playerSelection.charAt(0).toUpperCase() + playerSelection.substr(1).toLowerCase();
     const cChoice = computerSelection.charAt(0).toUpperCase() + computerSelection.substr(1).toLowerCase();
 
     const win = `${pChoice} beats ${cChoice}. You win!`;
     const lose = `${cChoice} beats ${pChoice}. You lose!`;
+
+    if(pChoice === cChoice) return "It's a tie!";
 
     switch(pChoice){
         case "Rock":
