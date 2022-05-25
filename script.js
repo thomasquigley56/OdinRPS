@@ -32,6 +32,66 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
+const results = document.querySelector(".results");
+const score = document.querySelector(".score");
+const winner = document.querySelector(".winner");
+
+const rock = document.querySelector(".rock");
+const paper = document.querySelector(".paper");
+const scissors = document.querySelector(".scissors");
+/*rock.addEventListener("click", () => results.textContent=(playRound("Rock", computerPlay())));
+paper.addEventListener("click", () => results.textContent=(playRound("Paper", computerPlay())));
+scissors.addEventListener("click", () => results.textContent=(playRound("Scissors", computerPlay())));*/
+
+let pWins = 0;
+let cWins = 0;
+let result;
+let done = false;
+
+function game(player){
+    result = playRound(player, computerPlay());
+    results.textContent=(result);
+    if(result.charAt(4) === 'w') pWins++;
+    else if(result.charAt(4) === 'l') cWins++;
+    results.textContent=result;
+    score.textContent = `Player Wins: ${pWins}\nComputer Wins: ${cWins}`;
+    if(pWins === 5){
+        winner.textContent = "Player wins!";
+        done = true;
+    }
+    if(cWins === 5){
+        winner.textContent = "Computer wins!";
+        done = true;
+    }
+}
+
+function removeAllEvents(){
+    rock.removeEventListener("click", rockHand);
+    paper.removeEventListener("click", paperHand);
+    scissors.removeEventListener("click", scissorsHand);
+}
+
+function rockHand() {
+    game("Rock");
+    if(done) removeAllEvents();
+}
+
+function paperHand() {
+    game("Paper");
+    if(done) removeAllEvents();
+}
+
+function scissorsHand() {
+    game("Scissors");
+    if(done) removeAllEvents();
+}
+
+//while(pWins !== 5 && cWins !== 5){
+    rock.addEventListener("click", rockHand);
+    paper.addEventListener("click", paperHand);
+    scissors.addEventListener("click", scissorsHand);
+//}
+
 /*function game(){
     let pWins = 0; //Player wins
     let cWins = 0; //Computer wins
