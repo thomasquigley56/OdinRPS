@@ -32,7 +32,7 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
-function game(){
+/*function game(){
     let pWins = 0; //Player wins
     let cWins = 0; //Computer wins
     let pChoice;
@@ -49,4 +49,4 @@ function game(){
     else console.log("It's a tie!");
 }
 
-game();
+game();*/
